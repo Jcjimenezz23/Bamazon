@@ -129,7 +129,7 @@ function displayStocks() {
 function runBamazon() {
 
 	//will display the current inventory
-	displayInventory(); 
+	displayStocks(); 
 }
 
 runBamazon();
