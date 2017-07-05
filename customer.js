@@ -96,4 +96,41 @@ function promptItems() {
 	})
 }
 
+function displayStocks() {
+	//create the db query string
+	queryStr = "SELECT * FROM products";
+
+	//db query
+	connection.query(queryStr, function(err, data) {
+		if(err) throw err;
+		console.log("Current Inventory: ");
+		console.log("-------------\n");
+
+		var store = " ";
+		for (var i = 0; i < data.length; i++) {
+			store = '';
+			store += 'Item ID: ' + data[i].item_id + '  //  ';
+			store += 'Product Name: ' + data[i].product_name + '  //  ';
+			store += 'Department: ' + data[i].department_name + '  //  ';
+			store += 'Price: $' + data[i].price + '\n';
+
+			console.log(store);
+		}
+
+		console.log("---------------------\n");
+
+		//prompt the user what they would like to purchase
+		promptUserPurchase();
+	})
+
+}
+
+//function that will run Bamazon
+function runBamazon() {
+
+	//will display the current inventory
+	displayInventory(); 
+}
+
+runBamazon();
 
